@@ -26,6 +26,7 @@ the capital?"   Complex?            (routing)          0.14ml water
 | **Simple** | "What is the capital of France?" | Simple | SLM | 0.0003g CO₂ |
 | **Complex** | "Write a Python sorting function" | Complex | LLM | 0.0471g CO₂ |
 
+
 ### Savings Example
 
 - 1 simple query routed to SLM instead of LLM: **0.0084g CO₂ saved**
@@ -188,6 +189,8 @@ MIT License - feel free to use this project for personal or commercial purposes
 ## 👤 Author
 
 Built by **pushparani7** with ❤️
+LinkedIn : https://www.linkedin.com/in/pushparani-b-839208337/
+Email : pushparanib7@gmail.com
 
 ## 🌍 Impact
 
