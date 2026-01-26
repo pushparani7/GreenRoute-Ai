@@ -13,10 +13,26 @@ Carbon-aware model router using **FastAPI + Streamlit**. Intelligently routes si
 
 ## 📊 How It Works
 `
-User Query → Router Classification → Model Selection → Emissions Calculate
-    ↓              ↓                      ↓                    ↓
-"What is        Simple? or          SLM or LLM         0.0084g CO₂
-the capital?"   Complex?            (routing)          0.14ml water
+┌─────────────────────────────────────────────────────────────────┐
+│                     GreenRoute AI Workflow                      |
+└─────────────────────────────────────────────────────────────────┘
+
+  Step 1              Step 2              Step 3              Step 4
+  INPUT          CLASSIFICATION         ROUTING           CALCULATION
+    │                  │                   │                   │
+    ▼                  ▼                   ▼                   ▼
+    
+"What is the   ─→  Simple or  ─→  Select Model  ─→  Calculate Impact
+capital of        Complex?      (SLM vs LLM)      (CO₂ & Water)
+France?"
+    │                  │                   │                   │
+    │              KEYWORD               RULE:                │
+    │              MATCHING          Simple → SLM         0.0084g CO₂
+    │                                Complex → LLM        0.14ml Water
+    │
+    └─ Input: 8 tokens
+    └─ Expected Response: 50 tokens
+    └─ Total: 58 tokens
 `
 
 ### Routing Logic
