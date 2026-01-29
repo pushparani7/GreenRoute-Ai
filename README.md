@@ -1,5 +1,7 @@
 ﻿# GreenRoute AI 🌱
 
+I designed an intelligent query orchestration system that dynamically routes user queries between local small language models and cloud-based large language models based on complexity, latency, and cost optimization. The system uses automatic scoring, real-time monitoring, and API-based architecture
+
 Carbon-aware model router using **FastAPI + Streamlit**. Intelligently routes simple queries to Small Language Models (SLM) and complex queries to Large Language Models (LLM) to minimize environmental impact.
 
 ## 🌍 Features
