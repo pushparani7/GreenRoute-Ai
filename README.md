@@ -1,66 +1,82 @@
-﻿# GreenRoute AI 🌱
+# 🌱 GreenRoute AI
 
-I designed an intelligent query orchestration system that dynamically routes user queries between local small language models and cloud-based large language models based on complexity, latency, and cost optimization. The system uses automatic scoring, real-time monitoring, and API-based architecture
+**Intelligent Query Orchestration System with Dual-Mode Routing**
 
-Carbon-aware model router using **FastAPI + Streamlit**. Intelligently routes simple queries to Small Language Models (SLM) and complex queries to Large Language Models (LLM) to minimize environmental impact.
+Automatically routes queries between **TinyLlama 1.1B** (local, fast, free) and **Mixtral 8x7B** (cloud, powerful, free) based on query complexity. Features both automatic intelligence and manual user control.
 
-## 🌍 Features
+![Status](https://img.shields.io/badge/status-production-ready-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Python](https://img.shields.io/badge/python-3.13-blue)
 
-- ✅ **Smart Query Routing** - Classifies queries as Simple or Complex
-- ✅ **Real-time Emissions Tracking** - Carbon & water usage per query
-- ✅ **Token-based Calculation** - Accurate impact based on query complexity
-- ✅ **Interactive Dashboard** - Beautiful Streamlit UI with metrics
-- ✅ **FastAPI Backend** - RESTful API with automatic docs
-- ✅ **Zero API Keys** - Uses local HuggingFace embeddings
+---
 
-## 📊 How It Works
-`
-┌─────────────────────────────────────────────────────────────────┐
-│                     GreenRoute AI Workflow                      |
-└─────────────────────────────────────────────────────────────────┘
+## 🎯 Key Features
 
-  Step 1              Step 2              Step 3              Step 4
-  INPUT          CLASSIFICATION         ROUTING           CALCULATION
-    │                  │                   │                   │
-    ▼                  ▼                   ▼                   ▼
-    
-"What is the   ─→  Simple or  ─→  Select Model  ─→  Calculate Impact
-capital of        Complex?      (SLM vs LLM)      (CO₂ & Water)
-France?"
-    │                  │                   │                   │
-    │              KEYWORD               RULE:                │
-    │              MATCHING          Simple → SLM         0.0084g CO₂
-    │                                Complex → LLM        0.14ml Water
-    │
-    └─ Input: 8 tokens
-    └─ Expected Response: 50 tokens
-    └─ Total: 58 tokens
-`
+### ⚡ Intelligent Dual-Mode Routing
 
-### Routing Logic
+| Mode | Behavior | Use Case |
+|------|----------|----------|
+| **AUTO** (Default) | System analyzes complexity & routes intelligently | Most queries - no decision needed |
+| **Force LLM** | Always use Mixtral 8x7B | Complex reasoning, code generation |
+| **Force SLM** | Always use TinyLlama 1.1B | Quick lookups, fast responses |
 
-| Query Type | Example | Route | Model | Emissions |
-|-----------|---------|-------|-------|-----------|
-| **Simple** | "What is the capital of France?" | Simple | SLM | 0.0003g CO₂ |
-| **Complex** | "Write a Python sorting function" | Complex | LLM | 0.0471g CO₂ |
+### 🤖 Two Powerful Models (100% FREE)
 
+**TinyLlama 1.1B** - Local Inference
+- ⚡ < 2 seconds per query
+- 💰 $0.00/query
+- 🏠 Runs locally (privacy-friendly)
+- Perfect for: Simple Q&A, lookups, classifications
 
-### Savings Example
+**Mixtral 8x7B** - Cloud Inference (HuggingFace)
+- 🧠 5-15 seconds per query (powerful reasoning)
+- 💰 $0.00/query (free tier)
+- ☁️ Cloud-based (HuggingFace API)
+- Perfect for: Code generation, analysis, design, complex reasoning
 
-- 1 simple query routed to SLM instead of LLM: **0.0084g CO₂ saved**
-- 1000 simple queries: **8.4g CO₂ saved** (equivalent to ~42m car drive)
+### 📊 Professional Metrics Tracking
 
-## 🚀 Quick Start
+- ✅ Automatic model selection reasoning
+- ✅ Query complexity scoring (0-25)
+- ✅ Real-time latency monitoring
+- ✅ Token counting & estimation
+- ✅ Carbon & water impact tracking
+- ✅ Cost analysis (always $0.00!)
+
+### 🌍 Environmental Impact
+
+**Per Query Savings** (SLM vs LLM)
+- 💚 Carbon: 0.0084g CO₂ saved
+- 💧 Water: 0.14ml conserved
+
+**Annual Impact** (1000 queries)
+- 📉 8.4g CO₂ saved (≈ 42m car drive)
+- 💧 140ml water saved
+
+---
+
+## 🚀 Quick Start (5 Minutes)
 
 ### Prerequisites
 - Python 3.13+
-- Git
+- HuggingFace API key (free)
+- 4GB RAM minimum
 
-### Installation
-`ash
-# Clone the repo
-git clone https://github.com/pushparani7/GreenRoute-Ai.git
-cd GreenRoute_ai
+### 1. Get HuggingFace API Key
+
+```bash
+# Visit: https://huggingface.co/signup (free account)
+# Go to: https://huggingface.co/settings/tokens
+# Create new "Read" token
+# Copy the token
+```
+
+### 2. Clone & Setup
+
+```bash
+# Clone repository
+git clone https://github.com/pushparani7/GreenRoute-AI.git
+cd GreenRoute-AI
 
 # Create virtual environment
 python -m venv .venv
@@ -68,152 +84,426 @@ python -m venv .venv
 # Activate (Windows)
 .\.venv\Scripts\activate
 
+# Or (Mac/Linux)
+source .venv/bin/activate
+
 # Install dependencies
 pip install -r requirements.txt
-`
+```
 
-### Run the Application
+### 3. Configure Environment
 
-**Option 1: Start both services together**
-`ash
-.\start.ps1
-`
+```bash
+# Create .env file
+echo "HF_API_KEY=hf_your_api_key_here" > .env
 
-**Option 2: Start separately**
+# Verify
+cat .env
+```
 
-Terminal 1 - Backend:
-`ash
+### 4. Start the System
+
+**Terminal 1 - Backend:**
+```bash
 .\.venv\Scripts\uvicorn app.main:app --reload
-`
-Backend: http://localhost:8000
-API Docs: http://localhost:8000/docs
+```
 
-Terminal 2 - Frontend:
-`ash
+Expected output:
+```
+✅ INFO:     Uvicorn running on http://127.0.0.1:8000
+✅ Application startup complete
+```
+
+**Terminal 2 - Frontend:**
+```bash
 .\.venv\Scripts\streamlit run dashboard.py
-`
-Frontend: http://localhost:8501
+```
+
+Expected output:
+```
+✅ You can now view your Streamlit app in your browser.
+✅ Local URL: http://localhost:8501
+```
+
+### 5. Use It!
+
+Open browser to: **http://localhost:8501**
+
+Try these queries:
+- **Simple**: "What is the capital of France?" → TinyLlama (⚡ ~1s)
+- **Complex**: "Design a microservices architecture" → Mixtral (🧠 ~8s)
+- **Override**: Force any model with dropdown selector
+
+---
 
 ## 📁 Project Structure
-`
-GreenRoute-Ai/
+
+```
+GreenRoute-AI/
 ├── app/
 │   ├── __init__.py
-│   ├── main.py           # FastAPI app & /route endpoint
-│   ├── router.py         # Query classification & emissions calculation
-│   └── impact.py         # Legacy impact functions
-├── dashboard.py          # Streamlit dashboard
-├── requirements.txt      # Dependencies
-├── start.ps1            # Start script
-├── .gitignore
-└── README.md
-`
+│   ├── main.py                 # FastAPI backend
+│   ├── complexity_scorer.py     # Query analysis
+│   ├── model_orchestrator.py    # Routing logic
+│   ├── slm_handler.py          # TinyLlama inference
+│   ├── llm_handler.py          # Mixtral inference
+│   ├── metrics_logger.py        # Performance tracking
+│   ├── router.py               # Legacy routing
+│   └── impact.py               # Legacy impact calc
+├── dashboard.py                # Streamlit UI
+├── requirements.txt            # Python dependencies
+├── .env                        # Environment config
+├── .gitignore                  # Git ignore rules
+└── README.md                   # This file
+```
 
-## 🔌 API Documentation
+---
 
-### POST /route
+## 🔌 API Reference
 
-**Request:**
-`json
+### Health Check
+```bash
+GET /health
+
+Response:
 {
-  "query": "What is the capital of France?"
+  "status": "healthy",
+  "service": "GreenRoute AI",
+  "version": "2.0.0"
 }
-`
+```
 
-**Response:**
-`json
+### Process Query
+
+```bash
+POST /query
+
+Request:
 {
   "query": "What is the capital of France?",
-  "route": "Simple",
-  "model": "SLM",
+  "mode": "AUTO"  # or "LLM" or "SLM"
+}
+
+Response:
+{
+  "query": "What is the capital of France?",
+  "response": "The capital of France is Paris...",
+  "model_used": "TinyLlama",
+  "mode": "Automatic",
+  "routing_reason": "Simple query (complexity: 2/25)",
+  "complexity_score": 2,
+  "latency_ms": 1234,
+  "tokens": {"input": 12, "output": 45},
+  "cost_usd": 0.0,
   "carbon_saved_g": 0.0084,
   "water_saved_ml": 0.14,
   "emissions_carbon_g": 0.0003,
   "emissions_water_ml": 0.005
 }
-`
+```
 
-### Query Classification
+### Get Statistics
+```bash
+GET /stats
 
-**Simple Queries** (route to SLM):
-- Factual recalls: "What is the capital of France?"
-- Math: "Convert 10 miles to kilometers"
-- Definitions: "What is photosynthesis?"
+Response:
+{
+  "summary": {
+    "total_queries": 45,
+    "tinyllama_queries": 32,
+    "mixtral_queries": 13,
+    "tinyllama_percentage": 71.1,
+    "total_cost_usd": 0.0,
+    "avg_latency_ms": 2345,
+    "total_carbon_saved_g": 0.2688,
+    "total_water_saved_ml": 4.48
+  },
+  "model_comparison": {...},
+  "recent_queries": [...]
+}
+```
 
-**Complex Queries** (route to LLM):
-- Code generation: "Write a Python function to sort a list"
-- Analysis: "Explain how machine learning works"
-- Creative: "Write a short story about AI"
+### Get Models Info
+```bash
+GET /models/info
 
-## 📊 Emissions Benchmarks (2026)
-
-Per query execution:
-
-| Model | CO₂ Emissions | Water Usage |
-|-------|---------------|-------------|
-| **LLM** | 0.15g per 1000 tokens | 2.5ml per 1000 tokens |
-| **SLM** | 0.005g per 1000 tokens | 0.08ml per 1000 tokens |
-
-**Estimated Response Lengths:**
-- Simple query: ~50 tokens
-- Complex query: ~300 tokens
-
-## 🎯 Environmental Impact
-
-### Real-World Equivalent
-
-- **0.0084g CO₂ saved per simple query** = 1 meter of car driving
-- **1,000 queries** = 8.4g CO₂ = ~42 meters car driving
-- **10,000 queries** = 84g CO₂ = ~420 meters car driving
-
-### Monthly Impact (100 queries)
-
-Using SLM for simple queries instead of LLM:
-- **Carbon saved:** 0.84g CO₂
-- **Water saved:** 1.4ml
-- **Equivalent to:** 4.2 meters of car driving avoided
-
-## 🔧 Technologies Used
-
-- **Backend:** FastAPI, Uvicorn
-- **Frontend:** Streamlit, Plotly
-- **Routing:** semantic-router, HuggingFace Transformers
-- **Embeddings:** sentence-transformers/all-MiniLM-L6-v2
-
-## 📈 Future Enhancements
-
-- [ ] Multi-language query support
-- [ ] Custom embedding models
-- [ ] Real-time energy price integration
-- [ ] Advanced analytics & reporting
-- [ ] Model fine-tuning capabilities
-- [ ] Batch query processing
-- [ ] Database for historical tracking
-- [ ] Dockerization
-
-## 🤝 Contributing
-
-Contributions welcome! Feel free to:
-1. Fork the repository
-2. Create a feature branch (git checkout -b feature/amazing-feature)
-3. Commit changes (git commit -m 'Add amazing feature')
-4. Push to branch (git push origin feature/amazing-feature)
-5. Open a Pull Request
-
-## 📜 License
-
-MIT License - feel free to use this project for personal or commercial purposes
-
-## 👤 Author
-
-Built by **pushparani7** with ❤️
-LinkedIn : https://www.linkedin.com/in/pushparani-b-839208337/
-Email : pushparanib7@gmail.com
-
-## 🌍 Impact
-
-Every query routed intelligently is a step towards sustainable AI. Together, we can build systems that are both powerful and responsible.
+Response:
+{
+  "slm": {
+    "model_name": "TinyLlama 1.1B",
+    "location": "Local (CPU/GPU)",
+    "cost_per_query": "$0.00",
+    "latency_estimate": "< 2 seconds",
+    ...
+  },
+  "llm": {
+    "model_name": "Mixtral 8x7B",
+    "location": "Cloud (HuggingFace)",
+    "cost_per_query": "$0.00",
+    "latency_estimate": "5-15 seconds",
+    ...
+  }
+}
+```
 
 ---
 
+## 🧠 How Routing Works
+
+### Complexity Scoring Algorithm
+
+```python
+score = 0
+
+# Length (more words = more complex)
+score += len(query.split())
+
+# Keywords (detect complex patterns)
+score += sum(5 for keyword in ["explain", "design", "analyze"] 
+             if keyword in query.lower())
+
+# Punctuation (multiple sentences)
+score += query.count(".") + query.count("?")
+
+# Code patterns (API, function, algorithm)
+score += sum(3 for pattern in ["function", "api", "algorithm"]
+             if pattern in query.lower())
+
+# Decision
+if score < 12:
+    model = TinyLlama  # Fast
+else:
+    model = Mixtral    # Powerful
+```
+
+### Real Examples
+
+**Simple Query**
+```
+Input: "What is 2+2?"
+Score: 2 (< 12)
+Decision: TinyLlama ✅
+Time: ~1 second
+```
+
+**Complex Query**
+```
+Input: "Design a REST API with authentication and database"
+Score: 16 (≥ 12)
+Decision: Mixtral ✅
+Time: ~8 seconds
+```
+
+**User Override**
+```
+Input: "Hello world" + Force LLM
+Score: 1 (< 12, but user overrides)
+Decision: Mixtral (user forced) ⚙️
+Time: ~6 seconds
+```
+
+---
+
+## 💰 Cost Analysis
+
+### Monthly Comparison (100 queries)
+
+| System | Cost/Query | Monthly |
+|--------|-----------|---------|
+| OpenAI GPT-4 | $0.03 | $3.00 |
+| GreenRoute AI | $0.00 | **$0.00** |
+| **Annual Savings** | - | **$36** |
+
+### Zero-Cost Forever
+
+- ✅ TinyLlama: Local (no API calls)
+- ✅ Mixtral: Free HuggingFace tier
+- ✅ No credit card required
+- ✅ No surprise charges
+
+---
+
+## 🔧 Configuration
+
+### Adjust Complexity Threshold
+
+```python
+# In app/main.py
+orchestrator = ModelOrchestrator(
+    complexity_threshold=12,  # Lower = more SLM usage
+    hf_api_key=HF_API_KEY
+)
+```
+
+### Change Models
+
+Edit `app/slm_handler.py` or `app/llm_handler.py` to use different models.
+
+---
+
+## 🐛 Troubleshooting
+
+### Backend Takes Too Long
+
+**Normal!** First query loads models (~30-60 seconds). Cached after that.
+
+```bash
+# Increase timeout in dashboard.py
+timeout=180  # 3 minutes
+```
+
+### HuggingFace API Key Not Found
+
+```bash
+# Create .env file
+echo "HF_API_KEY=hf_your_key" > .env
+
+# Verify
+cat .env
+```
+
+### TinyLlama Won't Load
+
+```bash
+# Reinstall PyTorch
+pip install --upgrade torch transformers
+```
+
+### Port Already in Use
+
+```bash
+taskkill /F /IM python.exe
+Start-Sleep -Seconds 2
+# Try again
+```
+
+---
+
+## 📈 Performance Benchmarks
+
+### Latency
+- **TinyLlama**: 0.5-2 seconds (local)
+- **Mixtral**: 5-15 seconds (cloud, first query loads model)
+
+### Accuracy
+- **TinyLlama**: Good for simple tasks
+- **Mixtral**: Excellent for complex reasoning
+
+### Cost
+- **Both**: $0.00/month (free forever!)
+
+---
+
+## 🚀 Deployment
+
+### Option 1: Railway (Recommended)
+```bash
+# Free tier: 5GB/month compute
+# Auto-scaling
+# No credit card
+
+# Just push to GitHub, Railway deploys automatically
+git push origin main
+```
+
+### Option 2: HuggingFace Spaces
+```bash
+# Completely free
+# Made for ML projects
+# Auto-deploys from GitHub
+```
+
+### Option 3: AWS/GCP/Azure
+```bash
+# More control
+# Pay-as-you-go
+# Requires setup
+```
+
+---
+
+## 📊 Architecture
+
+```
+┌─────────────────────────────────────────────┐
+│         Streamlit Dashboard (UI)            │
+│  - Model selector (AUTO/LLM/SLM)           │
+│  - Query input & history                    │
+│  - Environmental impact tracking            │
+└────────────────┬────────────────────────────┘
+                 │ HTTP
+┌────────────────▼────────────────────────────┐
+│      FastAPI Backend (Intelligence)         │
+│  - Complexity scoring                       │
+│  - Routing decision                         │
+│  - User override handling                   │
+└────────────────┬────────────────────────────┘
+                 │
+     ┌───────────┴───────────┐
+     │                       │
+┌────▼──────────┐   ┌───────▼────────┐
+│  TinyLlama    │   │    Mixtral     │
+│  (Local)      │   │  (HuggingFace) │
+│  ⚡ < 2s      │   │   🧠 5-15s     │
+│  💰 $0.00     │   │   💰 $0.00     │
+└───────────────┘   └────────────────┘
+```
+
+---
+
+## 🎓 What You're Building
+
+This is **not a prototype** — it's a **production-grade system** featuring:
+
+✅ Intelligent automatic routing  
+✅ User control & override  
+✅ Professional metrics tracking  
+✅ Environmental impact monitoring  
+✅ Zero monthly costs  
+✅ Real LLMs (not fake)  
+✅ Clean, professional UX  
+
+**This is what senior engineers build.**
+
+---
+
+## 📚 Technologies Used
+
+- **Backend**: FastAPI, Uvicorn
+- **Frontend**: Streamlit
+- **Models**: TinyLlama (local), Mixtral (cloud)
+- **Routing**: Custom complexity scoring
+- **Monitoring**: Metrics logging & export
+- **APIs**: HuggingFace Inference API
+
+---
+
+## 📝 License
+
+MIT License - Feel free to use for personal or commercial projects.
+
+---
+
+## 👤 Author
+
+Built by **pushparani7**
+
+---
+
+## 🌍 Environmental Impact
+
+Every query routed intelligently is a step toward sustainable AI. Together, we can build systems that are both powerful and responsible.
+
 **Made with 🌱 for a greener AI future**
+
+---
+
+## 📞 Support
+
+- 📖 See `TINYLLAMA_MIXTRAL_SETUP.md` for detailed setup
+- 📖 See `DUAL_MODE_ROUTING.md` for architecture details
+- 📖 See `QUICKSTART.md` for 5-minute setup
+
+---
+
+**⭐ If you find this useful, please star the repository!**
