@@ -451,9 +451,8 @@ git push origin main
 
 ---
 
-## 🎓 What You're Building
 
-This is **not a prototype** — it's a **production-grade system** featuring:
+This is **not a prototype**, it's a **production-grade system** featuring:
 
 ✅ Intelligent automatic routing  
 ✅ User control & override  
@@ -463,7 +462,6 @@ This is **not a prototype** — it's a **production-grade system** featuring:
 ✅ Real LLMs (not fake)  
 ✅ Clean, professional UX  
 
-**This is what senior engineers build.**
 
 ---
 
@@ -486,7 +484,7 @@ MIT License - Feel free to use for personal or commercial projects.
 
 ## 👤 Author
 
-Built by **pushparani7**
+Built by **PUSHPARANI**
 
 ---
 
@@ -500,9 +498,8 @@ Every query routed intelligently is a step toward sustainable AI. Together, we c
 
 ## 📞 Support
 
-- 📖 See `TINYLLAMA_MIXTRAL_SETUP.md` for detailed setup
-- 📖 See `DUAL_MODE_ROUTING.md` for architecture details
-- 📖 See `QUICKSTART.md` for 5-minute setup
+- LinkedIn: https://www.linkedin.com/in/pushparani-b-839208337/
+- Email   : pushparanib7@gmail.com
 
 ---
 
