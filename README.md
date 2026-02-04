@@ -1,6 +1,6 @@
 # 🌱 GreenRoute AI
 
-**An intelligent AI query router that automatically picks the efficient model based on your question—completely free, zero costs, and environmentally friendly.**
+**An intelligent query orchestration system that automatically routes queries between small and large language models based on complexity. Achieved zero monthly costs while maintaining professional-grade performance metrics. Features include automatic complexity scoring, environmental impact tracking, and dual-mode routing (automatic + manual override).**
 
 When you ask a simple question like "What's 2+2?" it routes to a tiny, super-fast model (⚡ 1 second). When you ask something complex like "Design a microservices architecture," it routes to a powerful model (🧠 8 seconds). Best of both worlds—automatic optimization with zero costs.
 
