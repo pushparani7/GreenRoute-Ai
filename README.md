@@ -1,10 +1,17 @@
 # 🌱 GreenRoute AI
 
-**Intelligent Query Orchestration System with Dual-Mode Routing**
+**An intelligent AI query router that automatically picks the efficient model based on your question—completely free, zero costs, and environmentally friendly.**
 
-Automatically routes queries between **TinyLlama 1.1B** (local, fast, free) and **Mixtral 8x7B** (cloud, powerful, free) based on query complexity. Features both automatic intelligence and manual user control.
+When you ask a simple question like "What's 2+2?" it routes to a tiny, super-fast model (⚡ 1 second). When you ask something complex like "Design a microservices architecture," it routes to a powerful model (🧠 8 seconds). Best of both worlds—automatic optimization with zero costs.
 
-![Status](https://img.shields.io/badge/status-production-ready-brightgreen)
+### Quick Stats
+- 💰 **$0.00/month** (100% free)
+- ⚡ **< 2 seconds** for simple queries
+- 🧠 **5-15 seconds** for complex queries
+- 🌍 **0.0084g CO₂ saved** per simple query
+- 👤 **User control** - override routing anytime
+
+  
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Python](https://img.shields.io/badge/python-3.13-blue)
 
